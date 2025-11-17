@@ -25,6 +25,7 @@ type GlyphSkyPoint = {
 
 export default function SettingsPage() {
   const navigate = useNavigate()
+  const repoUrl = 'https://github.com/inwinter04/GradeCheck'
   const [shortcut, setShortcut] = useState('CommandOrControl+N')
   const [isEditing, setIsEditing] = useState(false)
   const [tempShortcut, setTempShortcut] = useState('')
@@ -643,6 +644,31 @@ export default function SettingsPage() {
                   >
                     www.iamdt.cn
                   </a>
+                </div>
+
+                <div>
+                  <p className="font-medium mb-2">项目仓库</p>
+                  <button
+                    aria-label="打开 GitHub 仓库"
+                    title="打开 GitHub 仓库"
+                    onClick={async () => {
+                      if (window.electronAPI && (window.electronAPI as any).openBrowserUrl) {
+                        await (window.electronAPI as any).openBrowserUrl(repoUrl)
+                      } else {
+                        window.open(repoUrl, '_blank')
+                      }
+                    }}
+                    className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      className="w-5 h-5 text-gray-700"
+                    >
+                      <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.11.82-.26.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.082-.73.082-.73 1.205.084 1.84 1.238 1.84 1.238 1.07 1.834 2.807 1.304 3.492.997.108-.776.42-1.305.763-1.605-2.665-.305-5.467-1.334-5.467-5.93 0-1.31.47-2.38 1.236-3.22-.124-.304-.536-1.53.117-3.185 0 0 1.01-.323 3.31 1.23a11.52 11.52 0 0 1 3.018-.406c1.024.005 2.053.138 3.018.406 2.3-1.553 3.31-1.23 3.31-1.23.653 1.655.241 2.88.118 3.185.77.84 1.236 1.91 1.236 3.22 0 4.61-2.807 5.624-5.48 5.92.43.37.824 1.1.824 2.22 0 1.606-.014 2.9-.014 3.293 0 .32.218.694.825.576C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z" />
+                    </svg>
+                  </button>
                 </div>
                 
                 <div>
