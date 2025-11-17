@@ -1,0 +1,28 @@
+node_modules/
+dist/
+dist-electron/
+release/
+out/
+
+# Build outputs
+*.log
+*.blockmap
+*.exe
+*.msi
+*.dmg
+*.AppImage
+
+# OS / tooling
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Env & local configs
+.env
+.env.*
+
+# App artifacts
+标记记录/
+extension/*.zip
+
